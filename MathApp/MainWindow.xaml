@@ -1,0 +1,63 @@
+﻿<Window x:Class="MathApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathApp"
+        mc:Ignorable="d"
+        Title="MathWindow" Height="700" Width="1000">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock>Введите уравнение:</TextBlock>
+                <StackPanel Orientation="Horizontal"  Margin="0 10 0 0">
+                    <TextBox x:Name="X3TextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                    <TextBlock Text="x^3 + "/>
+                    <TextBox x:Name="X2TextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                    <TextBlock Text="x^2 + "/>
+                    <TextBox x:Name="X1TextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                    <TextBlock Text="x + "/>
+                    <TextBox x:Name="X0TextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                    <TextBlock Text=" = 0"/>
+                </StackPanel>
+                <TextBlock x:Name="ErrorTextBlock" Margin="0 10 0 0"/>
+            </StackPanel>
+            
+            <StackPanel Margin="20 0 0 0">
+                <TextBlock>Интервал:</TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <TextBox x:Name="StartTextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                    <TextBlock>...</TextBlock>
+                    <TextBox x:Name="EndTextBox" Style="{StaticResource CoefTextBox}" TextChanged="TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="20 0 0 0">
+                <TextBlock>Точность:</TextBlock>
+                <TextBox x:Name="AccTextBox" Style="{StaticResource CoefTextBox}" Margin="0 10 0 0" TextChanged="TextChanged"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Button x:Name="CalculateButton" Width="150" Height="40" Margin="40 0 0 0" Click="CalculateButton_Click">Вычислить</Button>
+                <Button x:Name="ClearButton" Width="150" Height="40" Margin="40 10 0 0" Click="ClearButton_Click">Очистить</Button>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="ViewHDMethodButton" Click="ViewHDMethodButton_Click" Width="250" Height="50" IsEnabled="False">Метод половинного деления</Button>
+            <Button x:Name="ViewChMethodButton" Click="ViewChMethodButton_Click" Width="250" Height="50" IsEnabled="False">Метод хорд</Button>
+            <Button x:Name="ViewTangentMethodButton" Click="ViewTangentMethodButton_Click" Width="250" Height="50" IsEnabled="False">Метод касательных</Button>
+            <Button x:Name="ViewIterMethodButton" Click="ViewIterMethodButton_Click" Width="250" Height="50" IsEnabled="False">Метод итераций</Button>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" Margin="0 20 0 0" HorizontalAlignment="Stretch">
+            <StackPanel x:Name="AnswerStackPanel" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Row="2"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
